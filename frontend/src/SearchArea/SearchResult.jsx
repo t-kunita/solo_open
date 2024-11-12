@@ -10,6 +10,53 @@ const SearchResult = () => {
         return `/image/conferenceRoom/${reservationName}.jpeg`;
     };
 
+    const createEvent = async (faciltyId) => {
+        try {
+            const startTime = new Date()
+            const newEvent = {
+                subject: 'OfficeNaviからの予約',
+                start: {
+                    dateTime: startTime,   // ボタンがクリックされた時の開始時刻
+                    timeZone: 'UTC'
+                },
+                end: {
+                    dateTime: new Date(new Date(startTime).getTime() + 60 * 60 * 1000),
+                    timeZone: 'UTC'
+                },
+                location: {
+                    displayName: faciltyId
+                },
+                // attendees: [
+                //     {
+                //         emailAddress: {
+                //             address:
+                //             name:
+                //         },
+                //         type: 'required'
+                //     }
+                // ]
+            };
+            console.log("newEvent", newEvent)
+
+            const res = await fetch('/conferences', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(newEvent)
+            });
+            //
+            // if (!response.ok) {
+            //     throw new Error(`Error: ${response.statusText}`);  // レスポンスがOKでない場合エラーを投げる
+            // }
+            // const data = await response.json();  // レスポンスをJSON形式でパース
+            window.confirm("予約を取得しました。");
+            // console.log('Event created:', data);
+        } catch (error) {
+            console.error("Error fetching conferences:", error);
+        }
+
+    };
+
+
     if (!reservations) {
         return (<p>該当データは存在しませんでした</p>);
     }
@@ -42,7 +89,7 @@ const SearchResult = () => {
                         </div>
                         <div className="start-button">
                             {el.startTime.map((startEl, i) => (
-                                <button key={i}>
+                                <button key={i} onClick={() => createEvent(el.facilityId)}>
                                     {startEl}
                                 </button>
                             ))}

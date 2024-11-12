@@ -8,12 +8,22 @@ const floorModel = require("./src/floor_model");
 function setupServer() {
 
     const app = express();
-
+    app.use(express.json());
     app.use(express.static("../frontend/dist"));
 
     app.get("/conferences", async (req, res) => {
         try {
             const conferences = await conferenceModel.find(req);
+            res.status(200).send(conferences);
+        } catch (error) {
+            console.log(error);
+        }
+    });
+
+    app.post("/conferences", async (req, res) => {
+        try {
+            const conferences = await conferenceModel.post(req);
+
             res.status(200).send(conferences);
         } catch (error) {
             console.log(error);

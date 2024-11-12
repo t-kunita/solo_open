@@ -10,8 +10,8 @@ module.exports = {
     CONFERENCE_TABLE,
 
     async find(req) {
-        const area = decodeURIComponent(req.query.area)
-        const genre = decodeURIComponent(req.query.genre)
+        // const area = decodeURIComponent(req.query.area)
+        // const genre = decodeURIComponent(req.query.genre)
         const building = decodeURIComponent(req.query.building)
         const floor = decodeURIComponent(req.query.floor)
         const people = req.query.people
@@ -37,4 +37,8 @@ module.exports = {
         }
         return {data: result ? result : []};
     },
+    async post(req) {
+        const event = req.body.event
+        console.log("🍏サーバでリクエストを受信しました(req.body.event)", event)
+    }
 };

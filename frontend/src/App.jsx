@@ -19,7 +19,8 @@ const App = () => {
 
     return (
         <>
-            <h3 className="text-lg-start mb-4">Office Navi</h3>
+            {/*<h3 className="text-lg-start mb-4">Office Navi</h3>*/}
+            <img className="logo-image" src="./image/logo.png" alt="logo"></img>
             <OriginalCarousel/>
             <reservationsContext.Provider value={[reservations, setReservations]}>
                 <SearchArea/>

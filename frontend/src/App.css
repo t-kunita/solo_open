@@ -2,3 +2,10 @@ body {
     display: block;
 
 }
+
+.logo-image {
+    width: 300px;
+    height: auto;
+    margin: 0;
+    padding: 10px;
+}

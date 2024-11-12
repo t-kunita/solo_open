@@ -1,5 +1,5 @@
-import {useState, useEffect, useContext} from 'react';
-import {Form} from "react-bootstrap";
+import {useContext} from 'react';
+import {Form, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
 import {targetDataContext, buildingContext, buildingListContext} from "./SearchArea.jsx";
@@ -11,22 +11,23 @@ const DropdownBuilding = () => {
     const [buildingList] = useContext(buildingListContext);
 
     return (
-        <Form.Group controlId="building">
-            <Form.Label>建屋</Form.Label>
-            <span className="icon-left">
+        <Col xs={6} lg={3} className="input-container">
+            <Form.Group controlId="building">
+                <Form.Label>建屋</Form.Label>
+                <span className="icon-left">
                 <FontAwesomeIcon icon={faMapMarkerAlt}/>
             </span>
-            <Form.Select
-                value={building}
-                onChange={(e) => setBuilding(e.target.value)}
-            >
-                <option value="">選択ください</option>
-                {buildingList ? (buildingList.map((el, i) => (
-                    <option key={i} value={el}>{el}</option>
-                ))) : []}
-            </Form.Select>
-        </Form.Group>
-
+                <Form.Select
+                    value={building}
+                    onChange={(e) => setBuilding(e.target.value)}
+                >
+                    <option value="">選択ください</option>
+                    {buildingList ? (buildingList.map((el, i) => (
+                        <option key={i} value={el}>{el}</option>
+                    ))) : []}
+                </Form.Select>
+            </Form.Group>
+        </Col>
     );
 };
 

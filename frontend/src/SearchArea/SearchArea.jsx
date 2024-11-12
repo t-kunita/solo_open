@@ -4,10 +4,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import DropdownArea from './DropdownArea.jsx'
 import DropdownGenre from './DropdownGenre.jsx'
 import DropdownBuilding from "./DropdownBuilding.jsx";
-// import Dropdownfloor from "./Dropdownfloor.jsx";
 import {
     faMapMarkerAlt,
-    faBriefcase,
     faUserFriends,
     faClock,
 } from "@fortawesome/free-solid-svg-icons";
@@ -41,7 +39,6 @@ function SearchArea() {
     const [buildingList, setBuildingList] = useState([]);
     const [targetData, setTargetData] = useState([]);
     const [buildingData, setBuildingData] = useState([]);
-    const [floorData, setFloorData] = useState([]);
 
     useEffect(() => {
         const initialiser = async () => {
@@ -63,7 +60,6 @@ function SearchArea() {
             const searchDate = new Date(`${date} ${time}`)
             searchDate.setHours(searchDate.getHours() - 9)    //9時間前に変更
             const formattedDate = `${searchDate.getFullYear()}-${String(searchDate.getMonth() + 1).padStart(2, '0')}-${String(searchDate.getDate()).padStart(2, '0')}T${String(searchDate.getHours()).padStart(2, '0')}:${String(searchDate.getMinutes()).padStart(2, '0')}:${String(searchDate.getSeconds()).padStart(2, '0')}.0000000`;
-            // console.log(formattedDate);
 
             const queryParams = new URLSearchParams({
                 area,
@@ -84,43 +80,27 @@ function SearchArea() {
         <Container className="py-5">
             <Form>
                 <Row className="mb-3 g-0">
-                    <Col xs={6} lg={3} className="input-container">
-                        <buildingListContext.Provider value={[buildingList, setBuildingList]}>
-                            <buildingDataContext.Provider value={[buildingData, setBuildingData]}>
-                                <areaListContext.Provider value={[areaList, setAreaList]}>
-                                    <targetDataContext.Provider value={[targetData, setTargetData]}>
-                                        <genreListContext.Provider value={[genreList, setGenreList]}>
-                                            <areaContext.Provider value={[area, setArea]}>
-                                                <DropdownArea/>
-                                            </areaContext.Provider>
-                                        </genreListContext.Provider>
-                                    </targetDataContext.Provider>
-                                </areaListContext.Provider>
-                            </buildingDataContext.Provider>
-                        </buildingListContext.Provider>
-                    </Col>
+                    <buildingListContext.Provider value={[buildingList, setBuildingList]}>
+                        <buildingDataContext.Provider value={[buildingData, setBuildingData]}>
+                            <areaListContext.Provider value={[areaList, setAreaList]}>
+                                <targetDataContext.Provider value={[targetData, setTargetData]}>
+                                    <genreListContext.Provider value={[genreList, setGenreList]}>
+                                        <buildingContext.Provider value={[building, setBuilding]}>
+                                            <genreContext.Provider value={[genre, setGenre]}>
+                                                <areaContext.Provider value={[area, setArea]}>
+                                                    <DropdownArea/>
+                                                    <DropdownGenre/>
+                                                    <DropdownBuilding/>
+                                                </areaContext.Provider>
+                                            </genreContext.Provider>
+                                        </buildingContext.Provider>
+                                    </genreListContext.Provider>
+                                </targetDataContext.Provider>
+                            </areaListContext.Provider>
+                        </buildingDataContext.Provider>
+                    </buildingListContext.Provider>
 
-                    <Col xs={6} lg={3} className="input-container">
-                        <targetDataContext.Provider value={[targetData, setTargetData]}>
-                            <genreListContext.Provider value={[genreList, setGenreList]}>
-                                <genreContext.Provider value={[genre, setGenre]}>
-                                    <areaContext.Provider value={[area, setArea]}>
-                                        <DropdownGenre/>
-                                    </areaContext.Provider>
-                                </genreContext.Provider>
-                            </genreListContext.Provider>
-                        </targetDataContext.Provider>
-                    </Col>
 
-                    <Col xs={6} lg={3} className="input-container">
-                        {/*<areaContext.Provider value={[area]}>*/}
-                        <buildingListContext.Provider value={[buildingList]}>
-                            <buildingContext.Provider value={[building, setBuilding]}>
-                                <DropdownBuilding/>
-                            </buildingContext.Provider>
-                        </buildingListContext.Provider>
-                        {/*</areaContext.Provider>*/}
-                    </Col>
                     <Col xs={6} lg={3} className="input-container">
                         <Form.Group controlId="floor">
                             <Form.Label>フロア</Form.Label>

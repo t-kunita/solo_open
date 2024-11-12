@@ -6,10 +6,14 @@
 <!-- 該当するプロジェクトの中から任意のものを選ぶ-->
 <p style="display: inline">
   <!-- フロントエンドのフレームワーク一覧 -->
-
-[//]: # '  <img src="https://img.shields.io/badge/-Node.js-000000.svg?logo=node.js&style=for-the-badge">'
-
-[//]: # '  <img src="https://img.shields.io/badge/-React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB">'
+<img src="https://img.shields.io/badge/-React-61DAFB.svg?logo=&style=for-the-badge">
+<img src="https://img.shields.io/badge/-Javascript-F7DF1E.svg?logo=&style=for-the-badge">
+<img src="https://img.shields.io/badge/-Vite-003791.svg?logo=&style=for-the-badge"> 
+<img src="https://img.shields.io/badge/-Postgresql-336791.svg?logo=&style=for-the-badge">
+<img src="https://img.shields.io/badge/-Knex-272822.svg?logo=&style=for-the-badge"> 
+<img src="https://img.shields.io/badge/-Express-003791.svg?logo=&style=for-the-badge"> 
+<img src="https://img.shields.io/badge/-BOOTSTRAP-61DAFB.svg?logo=&style=for-the-badge"> 
+<img src="https://img.shields.io/badge/-node-003791.svg?logo=&style=for-the-badge"> 
 
   <!-- バックエンドのフレームワーク一覧 -->
   <!-- バックエンドの言語一覧 -->
@@ -32,21 +36,6 @@
 エリア、ジャンルごとに異なる予約アプリを利用していても、簡単にアクセスするできるアプリです。  
 また、Outlook で登録している設備についても検索することが可能です。
 
-[//]: # "<!-- プロジェクトの概要を記載 -->"
-
-[//]: #
-
-[//]: # '  <p align="left">'
-
-[//]: # "    <br />"
-
-[//]: # "    <!-- プロジェクト詳細にBacklogのWikiのリンク -->"
-
-[//]: # '    <a href="Backlogのwikiリンク"><strong>プロジェクト詳細 »</strong></a>'
-
-[//]: # "    <br />"
-
-[//]: # "    <br />"
 
 <p align="right">(<a href="#top">トップへ</a>)</p>
 

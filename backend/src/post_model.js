@@ -13,7 +13,8 @@ module.exports = {
             const insertData = {
                 subject: event.subject,
                 startTime: new Date(event.start.dateTime),
-                endTime: new Date(event.end.dateTime)
+                endTime: new Date(event.end.dateTime),
+                registerTime: new Date()
             }
 
             console.log("🍏🍏🍏", insertData)

@@ -1,14 +1,24 @@
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 import {Form, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMapMarkerAlt} from "@fortawesome/free-solid-svg-icons";
-import {targetDataContext, buildingContext, buildingListContext} from "./SearchArea.jsx";
+import {
+    // targetDataContext,
+    buildingContext,
+    buildingListContext,
+    floorListContext,
+    floorDataContext
+} from "./SearchArea.jsx";
 
 const DropdownBuilding = () => {
-    // const [targetData, setTargetData] = useContext(targetDataContext);
-    // const [area] = useContext(areaContext);
     const [building, setBuilding] = useContext(buildingContext);
     const [buildingList] = useContext(buildingListContext);
+    const [floorList, setFloorList] = useContext(floorListContext);
+    const [floorData, setFloorData] = useContext(floorDataContext)
+
+    useEffect(() => {
+        // console.log("Updated floorList:", floorList);
+    }, [floorList]);
 
     return (
         <Col xs={6} lg={3} className="input-container">
@@ -19,7 +29,11 @@ const DropdownBuilding = () => {
             </span>
                 <Form.Select
                     value={building}
-                    onChange={(e) => setBuilding(e.target.value)}
+                    onChange={(e) => {
+                        setBuilding(e.target.value)
+                        const floor = [...new Set(floorData.filter(el => el.building === e.target.value).map(el => el.floor))]
+                        setFloorList(floor)
+                    }}
                 >
                     <option value="">選択ください</option>
                     {buildingList ? (buildingList.map((el, i) => (

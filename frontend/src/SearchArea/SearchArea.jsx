@@ -4,8 +4,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import DropdownArea from './DropdownArea.jsx'
 import DropdownGenre from './DropdownGenre.jsx'
 import DropdownBuilding from "./DropdownBuilding.jsx";
+import Dropdownfloor from "./Dropdownfloor.jsx";
 import {
-    faMapMarkerAlt,
+    // faMapMarkerAlt,
     faUserFriends,
     faClock,
 } from "@fortawesome/free-solid-svg-icons";
@@ -16,8 +17,11 @@ import {getTargetData, getBuildingData, getFloorData} from "./initialize.js";
 export const areaContext = createContext();
 export const genreContext = createContext();
 export const buildingContext = createContext();
+export const floorContext = createContext();
 export const areaListContext = createContext();
-export const genreListContext = createContext();
+export const genreListContext = createContext()
+export const floorListContext = createContext()
+
 export const buildingListContext = createContext();
 export const targetDataContext = createContext();
 export const buildingDataContext = createContext();
@@ -37,8 +41,10 @@ function SearchArea() {
     const [areaList, setAreaList] = useState([]);
     const [genreList, setGenreList] = useState([]);
     const [buildingList, setBuildingList] = useState([]);
+    const [floorList, setFloorList] = useState([]);
     const [targetData, setTargetData] = useState([]);
     const [buildingData, setBuildingData] = useState([]);
+    const [floorData, setFloorData] = useState([]);
 
     useEffect(() => {
         const initialiser = async () => {
@@ -82,50 +88,30 @@ function SearchArea() {
                 <Row className="mb-3 g-0">
                     <buildingListContext.Provider value={[buildingList, setBuildingList]}>
                         <buildingDataContext.Provider value={[buildingData, setBuildingData]}>
-                            <areaListContext.Provider value={[areaList, setAreaList]}>
-                                <targetDataContext.Provider value={[targetData, setTargetData]}>
-                                    <genreListContext.Provider value={[genreList, setGenreList]}>
-                                        <buildingContext.Provider value={[building, setBuilding]}>
-                                            <genreContext.Provider value={[genre, setGenre]}>
-                                                <areaContext.Provider value={[area, setArea]}>
-                                                    <DropdownArea/>
-                                                    <DropdownGenre/>
-                                                    <DropdownBuilding/>
-                                                </areaContext.Provider>
-                                            </genreContext.Provider>
-                                        </buildingContext.Provider>
-                                    </genreListContext.Provider>
-                                </targetDataContext.Provider>
-                            </areaListContext.Provider>
+                            <floorDataContext.Provider value={[floorData, setFloorData]}>
+                                <areaListContext.Provider value={[areaList, setAreaList]}>
+                                    <targetDataContext.Provider value={[targetData, setTargetData]}>
+                                        <genreListContext.Provider value={[genreList, setGenreList]}>
+                                            <floorListContext.Provider value={[floorList, setFloorList]}>
+                                                <floorContext.Provider value={[floor, setFloor]}>
+                                                    <buildingContext.Provider value={[building, setBuilding]}>
+                                                        <genreContext.Provider value={[genre, setGenre]}>
+                                                            <areaContext.Provider value={[area, setArea]}>
+                                                                <DropdownArea/>
+                                                                <DropdownGenre/>
+                                                                <DropdownBuilding/>
+                                                                <Dropdownfloor/>
+                                                            </areaContext.Provider>
+                                                        </genreContext.Provider>
+                                                    </buildingContext.Provider>
+                                                </floorContext.Provider>
+                                            </floorListContext.Provider>
+                                        </genreListContext.Provider>
+                                    </targetDataContext.Provider>
+                                </areaListContext.Provider>
+                            </floorDataContext.Provider>
                         </buildingDataContext.Provider>
                     </buildingListContext.Provider>
-
-
-                    <Col xs={6} lg={3} className="input-container">
-                        <Form.Group controlId="floor">
-                            <Form.Label>フロア</Form.Label>
-                            <span className="icon-left">
-                            <FontAwesomeIcon icon={faMapMarkerAlt}/>
-                            </span>
-                            <Form.Select
-                                value={floor}
-                                onChange={(e) => setFloor(e.target.value)}
-                            >
-                                <option value="">選択ください</option>
-                                <option value="15F">15F</option>
-                                <option value="13F">13F</option>
-                                <option value="12F">12F</option>
-                                <option value="11F">11F</option>
-                                <option value="10F">10F</option>
-                                <option value="9F">９F</option>
-                                <option value="8F">８F</option>
-                                <option value="7F">７F</option>
-                                <option value="6F">６F</option>
-                                <option value="5F">５F</option>
-                                <option value="3F">３F</option>
-                            </Form.Select>
-                        </Form.Group>
-                    </Col>
 
                     <Col xs={6} lg={3} className="input-container">
                         <Form.Group controlId="date">

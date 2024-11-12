@@ -20,7 +20,7 @@ const DropdownArea = () => {
     const [buildingData, setBuildingData] = useContext(buildingDataContext);
 
     useEffect(() => {
-        console.log("Updated genreList:", genreList);
+        // console.log("Updated genreList:", genreList);
     }, [genreList]);
 
     return (

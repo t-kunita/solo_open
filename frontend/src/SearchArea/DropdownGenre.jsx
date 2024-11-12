@@ -15,14 +15,14 @@ const DropdownGenre = () => {
             <Form.Group controlId="genre">
                 <Form.Label>ジャンル</Form.Label>
                 <span className="icon-left">
-                            <FontAwesomeIcon icon={faBriefcase}/>
-                            </span>
+                    <FontAwesomeIcon icon={faBriefcase}/>
+                </span>
                 <Form.Select
                     value={genre}
                     onChange={(e) => {
                         setGenre(e.target.value)
                         const target = targetData.filter(el => el.area === area && el.genre === e.target.value)
-                        console.log("target", target)
+                        // console.log("target", target)
                         if (target[0].url && target[0].url !== "Outlook") {
                             window.location.href = target[0].url;
                         }

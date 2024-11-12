@@ -1,0 +1,29 @@
+/* 各入力欄の高さを1.5倍にする */
+.form-control,
+.form-select {
+    height: calc(1.5 * 2.25rem + 2px);
+    padding-left: 2.5rem; /* アイコン分の余白を確保 */
+    font-size: 1.1rem;
+}
+
+.icon-left {
+    position: absolute;
+    left: 10px;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: red; /* アイコンの色を赤に */
+}
+
+.input-container {
+    position: relative;
+}
+
+.input-container .form-control,
+.input-container .form-select {
+    padding-left: 3rem;
+}
+
+.search-button {
+    height: calc(1.5 * 2.25rem + 2px);
+}

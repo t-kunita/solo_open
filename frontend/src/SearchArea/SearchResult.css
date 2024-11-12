@@ -1,0 +1,74 @@
+
+.reservation-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.options-container {
+    display: none;
+}
+
+.reservation-result-container {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+    .options-container {
+        /*display: block; !* PCで表示 *!*/
+        display: flex;
+        flex-direction: column;
+        width: 20%; /* 左側の幅 */
+        padding: 20px;
+        background-color: #f3f3f3; /* 背景色 */
+        border-right: 1px solid #ccc;
+    }
+}
+
+
+.reservation-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.reservation-result {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+.roomImage {
+    width: 250px;
+    height: auto;
+    margin: 0;
+}
+
+.reservation-result h2 {
+    text-align: center;
+    margin: 10px 50px;
+}
+
+.reservation-result p {
+    text-align: center;
+    margin: 10px 20px;
+    font-size: 20px;
+}
+
+
+.start-button {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+

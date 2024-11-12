@@ -5,7 +5,6 @@ export const getTargetData = async () => {
             throw new Error(`error! status: ${result.status}`);
         }
         const data = await result.json()
-        console.log("⭐️⭐️⭐️⭐️getTargetData", data)
         return data
 
     } catch (error) {
@@ -19,7 +18,6 @@ export const getBuildingData = async () => {
             throw new Error(`error! status: ${result.status}`);
         }
         const data = await result.json()
-        console.log("⭐️⭐️⭐️⭐️getBuildingsData", data)
         return data
 
     } catch (error) {
@@ -34,7 +32,6 @@ export const getFloorData = async () => {
             throw new Error(`error! status: ${result.status}`);
         }
         const data = await result.json()
-        console.log("⭐️⭐️⭐️⭐️getFloorsData", data)
         return data
 
     } catch (error) {

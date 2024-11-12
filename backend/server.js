@@ -4,6 +4,7 @@ const conferenceModel = require("./src/conference.model");
 const targetModel = require("./src/target_model");
 const buildingModel = require("./src/building_model");
 const floorModel = require("./src/floor_model");
+const postModel = require("./src/post_model");
 
 function setupServer() {
 
@@ -22,7 +23,7 @@ function setupServer() {
 
     app.post("/conferences", async (req, res) => {
         try {
-            const conferences = await conferenceModel.post(req);
+            const conferences = await postModel.post(req);
 
             res.status(200).send(conferences);
         } catch (error) {

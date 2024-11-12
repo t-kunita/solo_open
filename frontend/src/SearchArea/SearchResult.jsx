@@ -10,9 +10,10 @@ const SearchResult = () => {
         return `/image/conferenceRoom/${reservationName}.jpeg`;
     };
 
-    const createEvent = async (faciltyId) => {
+    const createEvent = async (faciltyId, start) => {
         try {
-            const startTime = new Date()
+            const currentDate = new Date();
+            const startTime = `${currentDate.toISOString().split('T')[0]}T${start}:00`;
             const newEvent = {
                 subject: 'OfficeNaviからの予約',
                 start: {
@@ -36,7 +37,7 @@ const SearchResult = () => {
                 //     }
                 // ]
             };
-            console.log("newEvent", newEvent)
+            // console.log("🍌newEvent", newEvent)
 
             const res = await fetch('/conferences', {
                 method: "POST",
@@ -89,7 +90,7 @@ const SearchResult = () => {
                         </div>
                         <div className="start-button">
                             {el.startTime.map((startEl, i) => (
-                                <button key={i} onClick={() => createEvent(el.facilityId)}>
+                                <button key={startEl} onClick={(e) => createEvent(el.facilityId, e.target.textContent)}>
                                     {startEl}
                                 </button>
                             ))}

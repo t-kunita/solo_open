@@ -37,8 +37,6 @@ module.exports = {
         }
         return {data: result ? result : []};
     },
-    async post(req) {
-        const event = req.body.event
-        console.log("🍏サーバでリクエストを受信しました(req.body.event)", event)
-    }
+
+
 };
